@@ -10,10 +10,9 @@ jobs:
   test:
     env:
       MONGODB_CLUSTER_ADDRESS: cluster0.e5mep1t.mongodb.net
-      MONGODB_USERNAME: dmivapi
-      MONGODB_PASSWORD: xuvju7-sewkeK-turnuw
+      MONGODB_USERNAME: ${{ secrets.MONGODB_USERNAME }}
+      MONGODB_PASSWORD: ${{ secrets.MONGODB_PASSWORD }}
       PORT: 8080
-    environment: testing
     runs-on: ubuntu-latest
     steps:
       - name: Get Code
@@ -39,4 +38,5 @@ jobs:
       - name: Output information
         run: |        
           echo "MONGODB_USERNAME: ${{ env.MONGODB_USERNAME }}"
-          echo "MONGODB_DB_NAME: $MONGODB_DB-NAME"
+          echo "MONGODB_DB_NAME: $MONGODB_DB_NAME"
+          echo "MONGODB_PASSWORD: ${{ secrets.MONGODB_PASSWORD }}"
